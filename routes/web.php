@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+/**微信路由 */
+Route::prefix('wechat')->group(function () {
+    Route::get('/index','Wechat\WechatController@index');
+});
