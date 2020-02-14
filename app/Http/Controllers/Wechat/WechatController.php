@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class WechatController extends Controller
 {
-    //
+    public function index(){
+        phpinfo();
+        echo 1;die;
+    }
 }
