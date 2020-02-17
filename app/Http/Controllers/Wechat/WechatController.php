@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class WechatController extends Controller
 {
     public function index(){
+        echo $_GET['echostr'];die;
         $signature  = $_GET['signature'];
         $timestamp  = $_GET['timestamp'];
         $nonce      = $_GET['nonce'];
