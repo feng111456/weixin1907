@@ -14,7 +14,7 @@ class WechatController extends Controller
             $nonce      = request()->nonce;
             $token = '123456abc';
             $tmparrat = array($token,$timestamp,$nonce);
-            sotr($tmparrat,SORT_STRING);
+            sort($tmparrat,SORT_STRING);
             $impstr = implode($tmparrat);
             $impstr = sha1($impstr);
             if($impstr == $signature){
