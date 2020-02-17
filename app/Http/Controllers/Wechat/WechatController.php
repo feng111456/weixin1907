@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class WechatController extends Controller
 {
     public function index(){
-        $signature  = $_GET['signature'];
+        $signature  = request()->signature;
         if(!empty($signature)){
-            $timestamp  = $_GET['timestamp'];
-            $nonce      = $_GET['nonce'];
+            $timestamp  = request()->timestamp;
+            $nonce      = request()->nonce;
             $token = '123456abc';
             $tmparrat = array($token,$timestamp,$nonce);
             sotr($tmparrat,SORT_STRING);
