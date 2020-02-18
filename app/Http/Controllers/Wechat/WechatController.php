@@ -26,6 +26,6 @@ class WechatController extends Controller
         // }
         //调用获取access_token方法
         $access_token =Wechat::getAccess_token();
-       dd($access_token);
+       echo $access_token;
     }
 }
