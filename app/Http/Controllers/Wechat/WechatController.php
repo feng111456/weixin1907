@@ -25,7 +25,7 @@ class WechatController extends Controller
         // echo $signature; 
         // }
         //调用获取access_token方法
-        $access_token = $this->getAccess_token();
+        $access_token =getAccess_token();
         echo $access_token;
     }
 }
