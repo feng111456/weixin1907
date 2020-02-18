@@ -8,7 +8,7 @@ class Wechat
     /**获取access_token */
     public static function getAccess_token(){
         $access_token = Cache::get('access_token');
-        if(impty($access_token)){
+        if(empty($access_token)){
             $Url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".self::appID."&secret=".self::appsecret;
             $res = file_get_contents($Url);
             $resArr = json_decode($res,true);
