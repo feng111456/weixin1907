@@ -9,7 +9,7 @@ class Wechat
         $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
         .self::appID."&secret=".self::appsecret;
         $resStr = file_get_contents($url);
-        $resArr = json_decode($res,true);
+        $resArr = json_decode($resStr,true);
         return $resArr['access_token'];
     }
 }
