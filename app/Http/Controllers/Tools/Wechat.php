@@ -8,7 +8,8 @@ class Wechat
     public static function getAccess_token(){
         $Url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=
         ".self::appID."&secret=".self::appsecret;
-        $resStr = file_get_contents($Url);
-        dd($resStr);
+        $res = file_get_contents($Url);
+        $resArr = json_decode($res,true);
+        dd($resArr);
     }
 }
