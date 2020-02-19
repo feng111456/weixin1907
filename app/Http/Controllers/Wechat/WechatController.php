@@ -10,7 +10,7 @@ class WechatController extends Controller
 {
     public function index(){
         $xml = $this->getInfo();
-        file_put_contents('check.txt',"\n".$xml,FILE_APPEND);
+        file_put_contents('/check.txt',"\n".$xml,FILE_APPEND);
         if($xml===false){
             //标识连接失败
         }else if($xml==$_GET['echostr']){
