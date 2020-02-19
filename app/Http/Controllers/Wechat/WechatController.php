@@ -9,8 +9,19 @@ use App\Http\Controllers\Tools\Wechat;
 class WechatController extends Controller
 {
     public function index(){
-        $xml = $this->getInfo();
-        dd($xml);
+        $signature  = request()->signature;
+        if(!empty($signature)){
+            $timestamp  = request()->timestamp;
+            $nonce      = request()->nonce;
+            $token = '123456abc';
+            $tmparrat = array($token,$timestamp,$nonce);
+            sort($tmparrat,SORT_STRING);
+            $impstr = implode($tmparrat);
+            $impstr = sha1($impstr);
+            if($impstr == $signature){
+                echo $_GET['echostr'];
+            }               
+        $xml = file_get_contents('php://input');
         file_put_contents('/check.txt',"\n".$xml,FILE_APPEND);
         if($xml===false){
             //标识连接失败
@@ -30,28 +41,5 @@ class WechatController extends Controller
         }
         //调用获取access_token方法
         //$access_token =Wechat::getAccess_token(); 
-    }
-    //获取微信推送信息
-    public function getInfo(){
-        $signature  = request()->signature;
-        if(!empty($signature)){
-            $timestamp  = request()->timestamp;
-            $nonce      = request()->nonce;
-            $token = '123456abc';
-            $tmparrat = array($token,$timestamp,$nonce);
-            sort($tmparrat,SORT_STRING);
-            $impstr = implode($tmparrat);
-            $impstr = sha1($impstr);
-            if($impstr == $signature){
-                echo $_GET['echostr'];
-                if(!isset($_GET['echostr'])){ 
-                    return file_get_contents('php://input');
-                }
-                    
-            }else{
-                return false;
-            }
-        }
-        return false;
     }
 }
