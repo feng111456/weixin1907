@@ -28,7 +28,6 @@ class WechatController extends Controller
         $xml=file_get_contents('php://input');
         file_put_contents('check.txt',"\n".$xml,FILE_APPEND);
         $xmlObj = simplexml_load_string($xml);
-        dump($xmlObj);die;
         if($xmlObj->MsgType=='event'){
             //说明是事件 在判断什么是事件
             if($xmlObj->Event=='subscribe'){
