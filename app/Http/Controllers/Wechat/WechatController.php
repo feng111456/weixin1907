@@ -43,12 +43,11 @@ class WechatController extends Controller
             $impstr = implode($tmparrat);
             $impstr = sha1($impstr);
             if($impstr == $signature){
-                if(isset($_GET['echostr'])){
-                    echo $_GET['echostr'];
-                    return  $_GET['echostr'];
-                }else{
+                echo $_GET['echostr'];
+                if(!isset($_GET['echostr'])){ 
                     return file_get_contents('php://input');
                 }
+                    
             }else{
                 return false;
             }
