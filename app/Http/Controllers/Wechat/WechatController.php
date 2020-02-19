@@ -15,7 +15,7 @@ class WechatController extends Controller
         if($xml===false){
             //标识连接失败
         }else if($xml==$_GET['echostr']){
-            echo $xml;
+            //标识连接成功
         }else{
             $xmlObj = simplexml_load_string($xml);
             if($xmlObj->MsgType=='event'){
@@ -44,6 +44,7 @@ class WechatController extends Controller
             $impstr = sha1($impstr);
             if($impstr == $signature){
                 if(isset($_GET['echostr'])){
+                    echo $_GET['echostr'];
                     return  $_GET['echostr'];
                 }else{
                     return file_get_contents('php://input');
