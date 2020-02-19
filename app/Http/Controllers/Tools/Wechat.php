@@ -20,12 +20,13 @@ class Wechat
     }
     /**被动回复文本信息的方法*/
     public static function restoreText($xmlObj,$Content){
-        echo"<xml>
+        $xmlText = "<xml>
 			  <ToUserName><![CDATA[".$xmlObj->FromUserName."]]></ToUserName>
 			  <FromUserName><![CDATA[".$xmlObj->ToUserName."]]></FromUserName>
 			  <CreateTime>".time()."</CreateTime>
 			  <MsgType><![CDATA[text]]></MsgType>
 			  <Content><![CDATA[".$Content."]]></Content>
-			</xml>";die;
+            </xml>";
+        echo $xmlText;
     } 
 }

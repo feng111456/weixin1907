@@ -167,3 +167,17 @@
 <Event><![CDATA[subscribe]]></Event>
 <EventKey><![CDATA[]]></EventKey>
 </xml>
+<xml><ToUserName><![CDATA[gh_868ca46e0392]]></ToUserName>
+<FromUserName><![CDATA[om-z3we2J1YzOuQGjj1MIGu6OzOo]]></FromUserName>
+<CreateTime>1582113594</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+<xml><ToUserName><![CDATA[gh_868ca46e0392]]></ToUserName>
+<FromUserName><![CDATA[om-z3we2J1YzOuQGjj1MIGu6OzOo]]></FromUserName>
+<CreateTime>1582113594</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
