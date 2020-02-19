@@ -30,7 +30,7 @@ class WechatController extends Controller
         $xmlObj = simplexml_load_string($xml);
         if($xmlObj->MsgType=='event'){
             //说明是事件 在判断什么是事件
-            if($xmlObj->Event=='subscribe]'){
+            if($xmlObj->Event=='subscribe'){
                 //关注事件
                 $content = '你好欢迎关注张攀峰的公众号！';
                 $res = Wechat::restoreText($xmlObj->FromUserName,$xmlObj->ToUserName,$content);
