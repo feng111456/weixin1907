@@ -17,7 +17,15 @@ class Wechat
             return $access_token;
         }
         return $access_token;
-        
-
     }
+    /**被动回复文本信息的方法*/
+    public static function restoreText($ToUserName,$FromUserName,$Content){
+        echo    "<xml>
+                    <ToUserName><![".$ToUserName."]]></ToUserName>
+                    <FromUserName><![".$FromUserName."]]></FromUserName>
+                    <CreateTime>".time()."</CreateTime>
+                    <MsgType><![CDATA[text]]></MsgType>
+                    <Content><![".$Content."]]></Content>
+                </xml>";
+    } 
 }
