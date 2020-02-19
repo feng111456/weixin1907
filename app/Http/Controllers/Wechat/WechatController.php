@@ -33,7 +33,7 @@ class WechatController extends Controller
             if($xmlObj->Event=='subscribe'){
                 //关注事件
                 $content = '你好欢迎关注张攀峰的公众号！';
-                $res = Wechat::restoreText($xmlObj->FromUserName,$xmlObj->ToUserName,$content);
+                $res = Wechat::restoreText($xmlObj,$content);
             }
         }
 
