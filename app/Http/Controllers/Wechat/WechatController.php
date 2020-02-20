@@ -42,8 +42,8 @@ class WechatController extends Controller
             }else if($xmlObj->Content=='文章'){
                 $contentArr = [
                     [
-                        'Title'=>'标题',
-                        'Description'=>'描述',
+                        'Title'=>'在石家庄你到底挣多少钱你才能够养活自己',
+                        'Description'=>'这世界充满着许多坎坷,觉得难过的时候,就低头看看卡里的余额,你就会更难过了！',
                         'PicUrl'=>"http://dingyue.ws.126.net/r962dQYkjNWddLGW252b2FghuUTiH8FrOnMcBmF7YbRdU1525154566271transferflag.png",
                         'Url'=>"http://dy.163.com/v2/article/detail/DGNV2ILE0514DL02.html"
                     ]
