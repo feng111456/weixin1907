@@ -29,4 +29,25 @@ class Wechat
             </xml>";
         echo $xmlText;
     } 
+    /**回复文章方法 */
+    public static function restoreNews($xmlObj,$contentArr){
+       $xmlData= "<xml>
+                        <ToUserName><![CDATA[toUser]]></ToUserName>
+                        <FromUserName><![CDATA[fromUser]]></FromUserName>
+                        <CreateTime>12345678</CreateTime>
+                        <MsgType><![CDATA[news]]></MsgType>
+                        <ArticleCount>".count($xmlData)."</ArticleCount>
+                        <Articles>";
+                        foreach($contentArr as $v){
+                        $xmlData.="<item>
+                                    <Title><![CDATA[".$v['Title']."]]></Title>
+                                    <Description><![".$v['Description']."]]></Description>
+                                    <PicUrl><![".$v['PicUrl']."]]></PicUrl>
+                                    <Url><![".$v['Url']."]]></Url>
+                                    </item>";
+                        }
+                            
+                    $xmlData .="</Articles>
+                    </xml>"; 
+    } 
 }

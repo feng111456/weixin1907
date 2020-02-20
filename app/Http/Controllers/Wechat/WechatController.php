@@ -32,13 +32,21 @@ class WechatController extends Controller
             //说明是事件 在判断什么是事件
             if($xmlObj->Event=='subscribe'){
                 //关注事件
-                $content = '你好欢迎关注张攀峰的公众号!主要功能是复读机！亲爱的用户在您使用公众号的期间！您发送什么消息我将回复您什么消息';
+                $content = '你好欢迎关注张攀峰的公众号!主要功能是复读机！亲爱的用户在您使用公众号的期间！您发送什么消息我将回复您什么消息，当你发送：文章 ，我会给你发送一篇文章';
                 $res = Wechat::restoreText($xmlObj,$content);
             }
         }else if($xmlObj->MsgType=='text'){
             if($xmlObj->Content=='爸爸'){
                 $content = '哎！乖儿子';
                 $res = Wechat::restoreText($xmlObj,$content);
+            }else if($xmlObj->Content=='文章'){
+                $contentArr = [
+                    [
+                        'Title'=>'标题',
+                        'Description'=>'描述'
+                    ]
+                ];
+                $res = Wechat::restoreNews($xmlObj,$contentArr);
             }else{
                 $content = $xmlObj->Content;
                 $res = Wechat::restoreText($xmlObj,$content);
