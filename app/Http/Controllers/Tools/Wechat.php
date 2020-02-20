@@ -36,18 +36,19 @@ class Wechat
                         <FromUserName><![CDATA[fromUser]]></FromUserName>
                         <CreateTime>12345678</CreateTime>
                         <MsgType><![CDATA[news]]></MsgType>
-                        <ArticleCount>".count($xmlData)."</ArticleCount>
+                        <ArticleCount>".count($contentArr)."</ArticleCount>
                         <Articles>";
                         foreach($contentArr as $v){
                         $xmlData.="<item>
-                                    <Title><![CDATA[".$v['Title']."]]></Title>
-                                    <Description><![".$v['Description']."]]></Description>
-                                    <PicUrl><![".$v['PicUrl']."]]></PicUrl>
-                                    <Url><![".$v['Url']."]]></Url>
+                                        <Title><![CDATA[".$v['Title']."]]></Title>
+                                        <Description><![CDATA[".$v['Description']."]]></Description>
+                                        <PicUrl><![CDATA[".$v['PicUrl']."]]></PicUrl>
+                                        <Url><![CDATA[".$v['Url']."]]></Url>
                                     </item>";
                         }
                             
                     $xmlData .="</Articles>
                     </xml>"; 
+        echo $xmlData;
     } 
 }

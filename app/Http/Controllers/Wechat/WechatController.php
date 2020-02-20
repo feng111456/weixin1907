@@ -43,7 +43,9 @@ class WechatController extends Controller
                 $contentArr = [
                     [
                         'Title'=>'标题',
-                        'Description'=>'描述'
+                        'Description'=>'描述',
+                        'PicUrl'=>"http://hebei.news.163.com/20/0103/14/F1VKQGCI04158FH3.html",
+                        'Url'=>"http://ubmcmm.baidustatic.com/media/v1/0f000FHVGP5rUCwF7DrFj0.jpg"
                     ]
                 ];
                 $res = Wechat::restoreNews($xmlObj,$contentArr);
