@@ -32,23 +32,22 @@ class Wechat
     /**回复文章方法 */
     public static function restoreNews($xmlObj,$contentArr){
        $xmlData= "<xml>
-                        <ToUserName><![CDATA[toUser]]></ToUserName>
-                        <FromUserName><![CDATA[fromUser]]></FromUserName>
-                        <CreateTime>12345678</CreateTime>
+                        <ToUserName><![CDATA[".$xmlObj->FromUserName."]]></ToUserName>
+                        <FromUserName><![CDATA[".$xmlObj->ToUserName."]]></FromUserName>
+                        <CreateTime>".time()."</CreateTime>
                         <MsgType><![CDATA[news]]></MsgType>
                         <ArticleCount>".count($contentArr)."</ArticleCount>
                         <Articles>";
                         foreach($contentArr as $v){
-                        $xmlData.="<item>
+                            $xmlData.="<item>
                                         <Title><![CDATA[".$v['Title']."]]></Title>
                                         <Description><![CDATA[".$v['Description']."]]></Description>
                                         <PicUrl><![CDATA[".$v['PicUrl']."]]></PicUrl>
                                         <Url><![CDATA[".$v['Url']."]]></Url>
                                     </item>";
-                        }
-                            
+                        }   
                     $xmlData .="</Articles>
-                    </xml>"; 
+                    </xml>";
         echo $xmlData;
     } 
 }
