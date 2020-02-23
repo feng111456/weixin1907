@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Tools;
 use Illuminate\Support\Facades\Cache;
+use App\Http\Controllers\Tools\Curl;
 class Wechat 
 {
     const appID = 'wxff7f4f8c33328445';
@@ -18,7 +19,7 @@ class Wechat
         }
         return $access_token;
     }
-    /**被动回复文本信息的方法*/
+    /**回复文本信息的方法*/
     public static function restoreText($xmlObj,$Content){
         $xmlText = "<xml>
 			  <ToUserName><![CDATA[".$xmlObj->FromUserName."]]></ToUserName>
@@ -50,4 +51,14 @@ class Wechat
                     </xml>";
         echo $xmlData;
     } 
+    /**获取微信服务器ip */
+    public static function getWechatIp(){
+        //获取access_token
+        $access_token = self::getAccess_token();
+        //获取微信服务器ip接口
+        $url = " https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=".$access_token;
+        //调用curl发送请求
+        $WechatIp = Curl::curlGet($url);
+        return $WechatIp;
+    }
 }

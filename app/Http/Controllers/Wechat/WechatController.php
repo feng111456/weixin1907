@@ -25,6 +25,8 @@ class WechatController extends Controller
         // }
         //调用获取access_token方法
         //$access_token =Wechat::getAccess_token(); 
+        $wechatIp = Wechat::getWechatIp();
+        print_r($wechatIp);die;
         $xml=file_get_contents('php://input');
         file_put_contents('check.txt',"\n".$xml,FILE_APPEND);
         $xmlObj = simplexml_load_string($xml);
