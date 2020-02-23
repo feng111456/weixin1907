@@ -56,7 +56,7 @@ class Wechat
         //获取access_token
         $access_token = self::getAccess_token();
         //获取微信服务器ip接口
-        $url = " https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=".$access_token;
+        $url = "https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=".$access_token;
         //调用curl发送请求
         $WechatIp = Curl::curlGet($url);
         return $WechatIp;
