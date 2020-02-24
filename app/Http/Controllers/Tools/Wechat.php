@@ -72,7 +72,7 @@ class Wechat
                 //一级菜单
                 [
                 'type'=>'click',
-                'name'=>'今日菜单'，
+                'name'=>'今日菜单',
                 'key'=>'vx00001'
                 ],
                 [
@@ -113,6 +113,5 @@ class Wechat
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);
         $res = Curl::curlPost($url,$data);
         return $res;
-
     }
 }
