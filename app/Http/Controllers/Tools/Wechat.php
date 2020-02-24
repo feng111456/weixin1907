@@ -85,9 +85,9 @@ class Wechat
                            'url'=>"http://www.baidu.com/"
                        ],
                        [
-                           'type'=>'location_select',
-                           'name'=>'发送位置',
-                           'key'=>'v00002'
+                            'name'=>'发送位置',
+                            'type'=>'location_select',
+                            'key'=>'v00002'
                        ]
                    ] 
                 ],
