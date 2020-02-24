@@ -61,4 +61,58 @@ class Wechat
         $WechatIp = Curl::curlGet($url);
         return $WechatIp;
     }
+    /**添加菜单的方法 */
+    public static function addMenu(){
+        //获取access_token
+        $access_token = self::getAccess_token();
+        //添加问下菜单接口
+        $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token;
+        $data = [
+            'button'=>[
+                //一级菜单
+                [
+                'type'=>'click',
+                'name'=>'今日菜单'，
+                'key'=>'vx00001'
+                ],
+                [
+                   //菜单 带子级菜单
+                   'name'=>'菜单',
+                   'sub_butto'=>[
+                       [
+                           'type'=>'view',
+                           'name'=>'百度一下'，
+                           'url'=>"http://www.baidu.com/"
+                       ],
+                       [
+                           'type'=>'location_select',
+                           'name'=>'发送位置'，
+                           'key'=>'v00002'
+                       ]
+                   ] 
+                ],
+                [
+                    'name'=>'发图',
+                    'sub_button'=>[
+                        [
+                            "type"=>"pic_sysphoto", 
+                            "name"=>"拍照发图", 
+                            "key"=>"v00003", 
+                            "sub_button": [ ]
+                        ],
+                        [
+                            "type"=>"pic_weixin", 
+                            "name"=>"微信相册发图", 
+                            "key"=> "v00004", 
+                            "sub_button": [ ]
+                        ]
+                    ]
+                ]
+            ]
+        ];
+        $data = json_encode($data,JSON_UNESCAPED_UNICODE);
+        $res = Curl::curlPost($url,$data);
+        return $res;
+
+    }
 }
