@@ -81,12 +81,12 @@ class Wechat
                    'sub_butto'=>[
                        [
                            'type'=>'view',
-                           'name'=>'百度一下'，
+                           'name'=>'百度一下',
                            'url'=>"http://www.baidu.com/"
                        ],
                        [
                            'type'=>'location_select',
-                           'name'=>'发送位置'，
+                           'name'=>'发送位置',
                            'key'=>'v00002'
                        ]
                    ] 
@@ -98,13 +98,13 @@ class Wechat
                             "type"=>"pic_sysphoto", 
                             "name"=>"拍照发图", 
                             "key"=>"v00003", 
-                            "sub_button": [ ]
+                            "sub_button"=> []
                         ],
                         [
                             "type"=>"pic_weixin", 
                             "name"=>"微信相册发图", 
                             "key"=> "v00004", 
-                            "sub_button": [ ]
+                            "sub_button"=>[]
                         ]
                     ]
                 ]
