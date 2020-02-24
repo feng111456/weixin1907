@@ -98,13 +98,11 @@ class Wechat
                             "type"=>"pic_sysphoto", 
                             "name"=>"拍照发图", 
                             "key"=>"v00003", 
-                            "sub_button"=> []
                         ],
                         [
                             "type"=>"pic_weixin", 
                             "name"=>"微信相册发图", 
                             "key"=> "v00004", 
-                            "sub_button"=>[]
                         ]
                     ]
                 ]
