@@ -78,7 +78,7 @@ class Wechat
                 [
                    //菜单 带子级菜单
                    'name'=>'菜单',
-                   'sub_butto'=>[
+                   'sub_button'=>[
                        [
                            'type'=>'view',
                            'name'=>'百度一下',
@@ -109,6 +109,7 @@ class Wechat
             ]
         ];
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);
+        echo $data;die;
         $res = Curl::curlPost($url,$data);
         return $res;
     }
