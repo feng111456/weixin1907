@@ -109,7 +109,6 @@ class Wechat
             ]
         ];
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);
-        echo $data;die;
         $res = Curl::curlPost($url,$data);
         return $res;
     }
