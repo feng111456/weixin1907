@@ -89,7 +89,7 @@ class WechatController extends Controller
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);
         $res = Curl::curlPost($url,$data);
         $res = json_decode($res,true);
-        $msgid = $res['msgid'];
+        dd($res);
         echo $msgid;die;
         $sendInfo=["msgid"=>$msgid,"addtime"=>time()];
         //实例化model
