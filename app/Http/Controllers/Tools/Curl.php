@@ -25,6 +25,8 @@ class Curl
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);  //设置获取的信息以文件流的形式返回，而不是直接输出。     
         curl_setopt($curl, CURLOPT_POST, 1);//设置post方式提交
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); //关闭https验证
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);//关闭https验证
         $output = curl_exec($curl);//执行curl
         curl_close($curl);//关闭URL请求
         return $output;  //返回结果
