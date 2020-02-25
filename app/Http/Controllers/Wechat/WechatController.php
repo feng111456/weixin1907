@@ -50,7 +50,7 @@ class WechatController extends Controller
                 $content = '哎！乖儿子';
                 $res = Wechat::restoreText($xmlObj,$content);
             }else if($xmlObj->Content=='文章'){
-                $contentArr = [
+               $contentArr = [
                     [
                         'Title'=>'在石家庄你到底挣多少钱你才能够养活自己',
                         'Description'=>'这世界充满着许多坎坷,觉得难过的时候,就低头看看卡里的余额,你就会更难过了！',
@@ -58,7 +58,7 @@ class WechatController extends Controller
                         'Url'=>"http://dy.163.com/v2/article/detail/DGNV2ILE0514DL02.html"
                     ]
                 ];
-                $res = Wechat::restoreNews($xmlObj,$contentArr);
+               // $res = Wechat::restoreNews($xmlObj,$contentArr);
             }else{
                 $content = $xmlObj->Content;
                 $res = Wechat::restoreText($xmlObj,$content);
