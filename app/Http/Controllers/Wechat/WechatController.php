@@ -40,11 +40,17 @@ class WechatController extends Controller
                 $content = '你好欢迎关注张攀峰的公众号!主要功能是复读机！亲爱的用户在您使用公众号的期间！您发送什么消息我将回复您什么消息，当你发送：文章 ，我会给你发送一篇文章';
                 $res = Wechat::restoreText($xmlObj,$content);
             }else if($xmlObj->Event=='CLICK'){
-                 if($xmlObj->EventKey=='vx00001'){
-                     //说明用户点击了今日菜单
-                     $content = '您点击了今日菜单！';
-                     $res = Wechat::restoreText($xmlObj,$content);
-                 }
+                if($xmlObj->EventKey=='vx00001'){
+                    //说明用户点击了今日菜单
+                    $content = '您点击了今日菜单！';
+                    $res = Wechat::restoreText($xmlObj,$content);
+                }
+            }else if($xmlObj->Event=='TEMPLATESENDJOBFINISH'){
+                    $msgid = $xmlObj->MsgID;
+                    $status = $xmlObj->Status=='success'?'1':'2';
+                    //实例化model
+                    $sendModel = new Send;
+                    $addRes = $sendModel::where('msgid','=',$msgid)->updata(['status'=>$status]);
             }
         }else if($xmlObj->MsgType=='text'){
             if($xmlObj->Content=='爸爸'){
