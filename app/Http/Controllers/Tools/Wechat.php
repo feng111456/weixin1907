@@ -49,7 +49,7 @@ class Wechat
                         }   
                     $xmlData .="</Articles>
                     </xml>";
-        //echo $xmlData;
+        echo $xmlData;
     } 
     /**获取微信服务器ip */
     public static function getWechatIp(){

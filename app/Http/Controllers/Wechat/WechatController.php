@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Tools\Wechat;
 use App\Http\Controllers\Tools\Curl;
+use App\Model\Send;
 
 class WechatController extends Controller
 {
@@ -58,7 +59,7 @@ class WechatController extends Controller
                         'Url'=>"http://dy.163.com/v2/article/detail/DGNV2ILE0514DL02.html"
                     ]
                 ];
-               // $res = Wechat::restoreNews($xmlObj,$contentArr);
+               $res = Wechat::restoreNews($xmlObj,$contentArr);
             }else{
                 $content = $xmlObj->Content;
                 $res = Wechat::restoreText($xmlObj,$content);
@@ -87,6 +88,16 @@ class WechatController extends Controller
         ];
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);
         $res = Curl::curlPost($url,$data);
-        echo $res;
+        $res = json_decode($res,true);
+        $msgid = $res->msgid;
+        $sendInfo=["msgid"=>$msgid,"addtime"=>time()];
+        //实例化model
+        $sendModel = new Send;
+        $addRes = $sendModel::create($sendInfo);
+        if($addRes){
+            echo "成功";
+        }else{
+            echo "失败";
+        }
     }
 }
