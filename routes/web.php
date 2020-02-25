@@ -17,4 +17,5 @@ Route::get('/', function () {
 /**微信路由 */
 Route::prefix('wechat')->group(function () {
     Route::any('/index','Wechat\WechatController@index');
+    Route::post('/sendTemplate','Wechat\WechatController@sendTemplate');
 });
