@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Wechat;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Tools\Wechat;
+use App\Http\Controllers\Tools\Curl;
 
 class WechatController extends Controller
 {
@@ -28,7 +29,6 @@ class WechatController extends Controller
         //$wechatIp = Wechat::getWechatIp();
         //print_r($wechatIp);die;
         // $res = Wechat::addMenu();
-        // echo $res;die;
         $xml=file_get_contents('php://input');
         file_put_contents('check.txt',"\n".$xml,FILE_APPEND);
         $xmlObj = simplexml_load_string($xml);
@@ -65,5 +65,28 @@ class WechatController extends Controller
             }
         }
 
+    }
+    public function sendTemplate(){
+        //获取access_token
+        $access_token =Wechat::getAccess_token();
+        $code = rand(100000,999999);
+        $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$access_token;
+        $data = [
+                "touser"=>"om-z3we2J1YzOuQGjj1MIGu6OzOo",
+                "template_id"=>"ojDgQkBLhfbA6cAhGBVDeGFdsm-YNzcyKOnh7LsHMvw",
+                "data"=>[
+                    "name"=>[
+                        "value"=>"攀峰",
+                        "color"=>"#173177"
+                    ],
+                    "code"=>[
+                        "value"=>$code,
+                        "color"=>"#173177"
+                    ]
+                ]
+        ];
+        $data = json_encode($data,JSON_UNESCAPED_UNICODE);
+        $res = Curl::curlPost($url,$data);
+        echo $res;
     }
 }

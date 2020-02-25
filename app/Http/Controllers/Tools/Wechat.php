@@ -112,4 +112,28 @@ class Wechat
         $res = Curl::curlPost($url,$data);
         return $res;
     }
+    /**发送模板消息 */
+    public static function sendTemplate(){
+        //获取access_token
+        $access_token = self::getAccess_token();
+        $code = rand(100000,999999);
+        $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$access_token;
+        $data = [
+                "touser"=>"om-z3we2J1YzOuQGjj1MIGu6OzOo",
+                "template_id"=>"ojDgQkBLhfbA6cAhGBVDeGFdsm-YNzcyKOnh7LsHMvw",
+                "data"=>[
+                    "name"=>[
+                        "value"=>"攀峰",
+                        "color"=>"#173177"
+                    ],
+                    "code"=>[
+                        "value"=>$code,
+                        "color"=>"#173177"
+                    ]
+                ]
+        ];
+        $data = json_encode($data,JSON_UNESCAPED_UNICODE);
+        $res = Curl::curlPost($url,$data);
+        return $res;
+    }
 }
