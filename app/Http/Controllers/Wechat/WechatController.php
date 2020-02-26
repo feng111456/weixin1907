@@ -47,10 +47,11 @@ class WechatController extends Controller
                 }
             }else if($xmlObj->Event=='TEMPLATESENDJOBFINISH'){
                     $msgid = $xmlObj->MsgID;
-                    $status = $xmlObj->Status=='success'?'1':'2';
+                    $status = $xmlObj->Status;
+                    $openid = $xmlObj->FromUserName;
                     //实例化model
                     $sendModel = new Send;
-                    $addRes = $sendModel::where('msgid','=',$msgid)->updata(['status'=>$status]);
+                    $addRes = $sendModel::where('msgid','=',$msgid)->updata(['status'=>$status,'openid'=>$openid]);
             }
         }else if($xmlObj->MsgType=='text'){
             if($xmlObj->Content=='爸爸'){
@@ -76,7 +77,9 @@ class WechatController extends Controller
     public function sendTemplate(){
         //获取access_token
         $access_token =Wechat::getAccess_token();
+        //随机验证码
         $code = rand(100000,999999);
+        //发送模板信息接口
         $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$access_token;
         $data = [
                 "touser"=>"om-z3we2J1YzOuQGjj1MIGu6OzOo",
