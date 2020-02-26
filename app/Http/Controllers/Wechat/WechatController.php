@@ -47,10 +47,11 @@ class WechatController extends Controller
                 }
             }else if($xmlObj->Event=='TEMPLATESENDJOBFINISH'){
                     $msgid = $xmlObj->MsgID;
-                    $status = $xmlObj->Status=='success'?'1':'2';
+                    $status = $xmlObj->Status;
+                    $openid = $xmlObj->FromUserName;
                     //实例化model
                     $sendModel = new Send;
-                    $addRes = $sendModel::where('msgid','=',$msgid)->updata(['status'=>$status]);
+                    $addRes = $sendModel::where('msgid','=',$msgid)->updata(['status'=>$status,'openid'=>$openid]);
             }
         }else if($xmlObj->MsgType=='text'){
             if($xmlObj->Content=='爸爸'){
@@ -98,7 +99,7 @@ class WechatController extends Controller
         $res = Curl::curlPost($url,$data);
         $res = json_decode($res,true);
         $msgid = $res['msgid'];
-        $sendInfo=["msgid"=>$msgid,"addtime"=>time(),"openid"=>123,"status"=>321];
+        $sendInfo=["msgid"=>$msgid,"addtime"=>time()];
         //实例化model
         $sendModel = new Send;
         $addRes = $sendModel::create($sendInfo);
