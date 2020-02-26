@@ -47,8 +47,8 @@ class WechatController extends Controller
                 }
             }else if($xmlObj->Event=='TEMPLATESENDJOBFINISH'){
                     $msgid = $xmlObj->MsgID;
-                    $status = $xmlObj->Status;
-                    $openid = $xmlObj->FromUserName;
+                    $status = 123;
+                    $openid = 321;
                     //实例化model
                     $sendModel = new Send;
                     $addRes = $sendModel::where('msgid','=',$msgid)->updata(['status','=',$status,'openid','=',$openid]);
