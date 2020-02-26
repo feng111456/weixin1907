@@ -51,7 +51,7 @@ class WechatController extends Controller
                     $openid = 123;
                     //实例化model
                     $sendModel = new Send;
-                    $addRes = $sendModel::where('msgid','=',$msgid)->updata(['status'=>$status,'openid'=>$openid]);
+                    $addRes = $sendModel::where('msgid','=',$msgid)->updata(['status'=>$status]);
             }
         }else if($xmlObj->MsgType=='text'){
             if($xmlObj->Content=='爸爸'){
