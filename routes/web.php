@@ -18,4 +18,6 @@ Route::get('/', function () {
 Route::prefix('wechat')->group(function () {
     Route::any('/index','Wechat\WechatController@index');
     Route::any('/sendTemplate','Wechat\WechatController@sendTemplate');
+    Route::any('/authorized','Wechat\WechatController@authorized');
+    Route::any('/test','Wechat\WechatController@test');
 });
