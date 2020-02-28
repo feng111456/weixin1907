@@ -19,7 +19,7 @@
         appId: 'wxff7f4f8c33328445', // 必填，公众号的唯一标识
         timestamp: {{time()}}, // 必填，生成签名的时间戳
         nonceStr: '123456abc', // 必填，生成签名的随机串
-        signature:document.getElementById("sign").value,// 必填，签名
+        signature:'{{$signature}}',// 必填，签名
         jsApiList: [
             'checkJsApi',
             'updateAppMessageShareData',
