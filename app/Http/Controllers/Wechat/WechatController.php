@@ -25,6 +25,7 @@ class WechatController extends Controller
                  //连接测试成功
             } 
         }
+        /*
         //调用获取access_token方法
         //$access_token =Wechat::getAccess_token(); 
         //$wechatIp = Wechat::getWechatIp();
@@ -71,7 +72,7 @@ class WechatController extends Controller
                 $content = $xmlObj->Content;
                 $res = Wechat::restoreText($xmlObj,$content);
             }
-        }
+        }*/
 
     }
     /**发送模板信息 */
