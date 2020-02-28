@@ -112,10 +112,9 @@ class WechatController extends Controller
     }
     /**网页授权 */
     public function authorized(){
-        //** */
         $scope='snsapi_userinfo';
         $appid = Wechat::appID;
-        $redirect_uri = urlencode("http://weixin07.zhangpanfeng.top/wechat/test");
+        $redirect_uri = urlencode("http://weixin07.zhangpanfeng.top/wechat/index");
         $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appid."&redirect_uri=".$redirect_uri."&response_type=code&scope=".$scope."&state=123456abc&connect_redirect=123#wechat_redirect";
         header('location:'.$url);
     }
