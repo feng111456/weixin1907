@@ -131,7 +131,7 @@ class WechatController extends Controller
         $time = time();
         $url = "http://http://weixin07.zhangpanfeng.top/wechat/test";
         $jsapi_ticket="jsapi_ticket=".$ticket."&noncestr=".$noncestr."&timestamp=".$time."&url=".$url;
-        $signature = "'".sha1($jsapi_ticket)."'";
+        $signature = sha1($jsapi_ticket);
         return view('wechat/test',['signature'=>$signature]);
     }
 }
