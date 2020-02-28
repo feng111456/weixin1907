@@ -118,7 +118,20 @@ class WechatController extends Controller
         $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appid."&redirect_uri=".$redirect_uri."&response_type=code&scope=".$scope."&state=123456abc&connect_redirect=123#wechat_redirect";
         header('location:'.$url);
     }
+    //测试页面
     public function test(){
-        echo 123;
+        $access_token =Wechat::getAccess_token();
+        //生成签名 获取
+        $url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$access_token."&type=jsapi";
+        $ticketStr = file_get_contents($url);
+        $ticketArr = json_decode($ticketStr,true);
+        $ticket = $ticketArr['ticket'];
+        //验签
+        $noncestr = "123456abc";
+        $time = time();
+        $url = "http://http://weixin07.zhangpanfeng.top/wechat/test";
+        $jsapi_ticket="jsapi_ticket=".$ticket."&noncestr=".$noncestr."&timestamp=".$time."&url=".$url;
+        $signature = sha1($jsapi_ticket);
+        return view('wechat/test',['signature'=>$signature]);
     }
 }
