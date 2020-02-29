@@ -8,7 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-   <input type="hidden" id="sign" value="{{$signature}}">
    {{$signature}}
 </body>
 </html>
