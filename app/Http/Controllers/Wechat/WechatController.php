@@ -155,6 +155,7 @@ class WechatController extends Controller
                 "content"=>$content
             ]
         ];
-        print_r($data);die;
+        $data = json_encode($data);
+        dd($data);
     }
 }
