@@ -161,6 +161,7 @@ class WechatController extends Controller
             ]
         ];
         $data = json_encode($data);
-        dd($data);
+        $res = Curl::CurlPost($url,$data);
+        echo $res;
     }
 }
