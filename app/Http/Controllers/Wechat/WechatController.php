@@ -143,8 +143,9 @@ class WechatController extends Controller
         $userInfo = file_get_contents($userInfoUrl);
         $userInfo = json_decode($userInfo,true);
         $openids = $userInfo['data']['openid'];
+        $count = count($openids);
         $openid = "";
-        for($i=0;$i<count($openids);$i++){
+        for($i=0;$i<$count;$i++){
             $openid.=$openids[$i].",";
         }
         dd($openid);
