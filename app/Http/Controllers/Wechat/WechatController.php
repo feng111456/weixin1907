@@ -146,14 +146,14 @@ class WechatController extends Controller
         $count = count($openids);
         $openid = "";
         for($i=0;$i<$count;$i++){
-            $openid.=$openids[$i].'"'.",";
+            $openid.=$openids[$i].",";
         }
-        dd($openid);
+        $openid =rtrim($openid,',');
         $url = "https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token=".$access_token;
         $content = '测试群发消息';
         $data = [
             "touser"=>[
-                $openids
+                $openid
             ],
             "msgtype"=>"text",
             "text"=>[ 
