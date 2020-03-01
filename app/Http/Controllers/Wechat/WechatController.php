@@ -143,6 +143,7 @@ class WechatController extends Controller
         $userInfo = file_get_contents($userInfoUrl);
         $userInfo = json_decode($userInfo,true);
         $openids = $userInfo['data']['openid'];
+        $openids = implode(',',$openids);
         print_r($openids);die;
         $url = "https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token=".$access_token;
         $$data = [
