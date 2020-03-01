@@ -134,4 +134,24 @@ class WechatController extends Controller
         $signature = sha1($jsapi_ticket);
         return view('wechat/test',['signature'=>$signature,'time'=>$time,'noncestr'=>$noncestr,'url'=>$url]);
     }
+    /**群发消息 */
+    public function massSend(){
+        //先获取 access_tiken
+        $access_token =Wechat::getAccess_token();
+        //先获取 公众号用户openid
+        $userInfoUrl ="https://api.weixin.qq.com/cgi-bin/user/get?access_token=".$access_token."&next_openid=";
+        $userInfo = file_get_contents($userInfoUrl);
+        $userInfo = json_decode($userInfo,true);
+        dd($userInfo);
+        $url = "https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token=".$access_token;
+        $$data = [
+            "touser"=>[
+                
+            ],
+            "msgtype"=>"text",
+            "text"=>[ 
+                "content"=>$content
+            ]
+        ];
+    }
 }

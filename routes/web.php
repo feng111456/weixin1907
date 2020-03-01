@@ -20,4 +20,5 @@ Route::prefix('wechat')->group(function () {
     Route::any('/sendTemplate','Wechat\WechatController@sendTemplate');
     Route::any('/authorized','Wechat\WechatController@authorized');
     Route::any('/test','Wechat\WechatController@test');
+    Route::any('/massSend','Wechat\WechatController@massSend');
 });
